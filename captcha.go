@@ -50,6 +50,7 @@ import (
 	"errors"
 	"io"
 	"time"
+	"fmt"
 )
 
 const (
@@ -91,7 +92,7 @@ func NewLen(length int) (id string) {
 func VerifyCode(id string) (value string) {
 	b := globalStore.Get(id, false)
 	for _, v := range b {
-		value = log.Sprintf("%s%d", value, v)
+		value = fmt.Sprintf("%s%d", value, v)
 	}
 	return value
 }
